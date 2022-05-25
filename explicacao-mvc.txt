@@ -1,0 +1,22 @@
+Utilização do MVC
+
+M = models, que servem para manipulação de dados (manipulação dedos)
+V = viuw, que servem para integração com o usuario (html, integração com usuario)
+C = controller, que servem para o controle (receber requisições, criar as regras de nogocios)
+
+Codigo mais limpo
+Reaprovetamento de codigo mais facil
+Facilidade de dar manutenção (modoficação)
+Scalave
+Dividir as tarefes em equipe
+M analysta de dados
+V front-end
+C progamador
+
+Utilizado por diferentes frameworks (php)
+
+https://code.visualstudio.com/
+https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#mysqldump-option-summary
+https://www.phpmyadmin.net/
+https://getcomposer.org/
+https://www.heidisql.com/download.php

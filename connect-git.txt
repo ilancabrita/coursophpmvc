@@ -1,0 +1,31 @@
+Microsoft Windows [version 10.0.22000.675]
+(c) Microsoft Corporation. Tous droits réservés.
+
+C:\Users\HP>cd C:\xampp\htdocs\coursophpmvc
+
+C:\xampp\htdocs\coursophpmvc>echo "# coursophpmvc" >> README.md
+
+C:\xampp\htdocs\coursophpmvc>git init
+Initialized empty Git repository in C:/xampp/htdocs/coursophpmvc/.git/
+
+C:\xampp\htdocs\coursophpmvc>git add README.md
+
+C:\xampp\htdocs\coursophpmvc>git commit -m "first commit"
+[master (root-commit) 7e31848] first commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+
+C:\xampp\htdocs\coursophpmvc>git branch -M main
+
+C:\xampp\htdocs\coursophpmvc>git remote add origin https://github.com/ilancabrita/coursophpmvc.git
+
+C:\xampp\htdocs\coursophpmvc>git push -u origin main
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 244 bytes | 122.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/ilancabrita/coursophpmvc.git
+ * [new branch]      main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+
+C:\xampp\htdocs\coursophpmvc>
