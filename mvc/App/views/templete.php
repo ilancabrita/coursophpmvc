@@ -7,6 +7,10 @@
     <title>Couso php nvc</title>
 </head>
 <body>
+    <h2>Bloco de anotações</h2>
+    <a href="/">Home</a>
+    <a href="/notes/criar">Criar um bloco</a>
+    <a href="/home/login">Login</a>
     <?php
     require_once '../App/views'.$view.'.php';
     ?>

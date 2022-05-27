@@ -1,9 +1,36 @@
-<?php foreach($data as $note); ?>
+<br>
 
-<h1><?php echo $note['titulo']; ?></h1>
+<?php
+if(!empty($data['mensagem'])):
+    foreach($data['mensagem'] as $m):
+        echo $m."<br>";
+    endforeach;
+endif;
+?>
 
-<p><?php echo $note['texto']; ?></p>
+<?php
+foreach($data['registros'] as $note);
+?>
+
+<h1>
+    <a href="/notes/ver/<?php echo $note['id']; ?>">
+    <?php
+    echo $note['titulo'];
+    ?>
+    </a>
+</h1>
+
+<p>
+    <?php
+    echo $note['texto'];
+    ?>
+</p>
+
+<a href="/notes/editar/<?php echo $note['id']; ?>">excluir</a>
+
+<a href="/notes/excluir/<?php echo $note['id']; ?>">excluir</a>
 
 <br>
 
-<?php endforeach; ?>
+<?php 
+?>
