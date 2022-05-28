@@ -1,3 +1,5 @@
+<h1>Criar bloce de anotações</h1>
+
 <?php
 if(!empty($data['mensagem'])):
     foreach($data['mensagem'] as $m):
@@ -6,12 +8,12 @@ if(!empty($data['mensagem'])):
 endif;
 ?>
 
-<h1>Fazer login</h1>
-
-<form action="" method="POST">
+<form action="/users/cadastrar" method="POST">
+    Nome: <input type="text" name="nome">
+    <br>
     Email: <input type="text" name="email">
     <br>
     Senha: <input type="password" name="senha">
     <br>
-    <button name="entrar">Entrar</button>
+    <button name="cadastrar">Cadastrar</button>
 </form>

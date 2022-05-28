@@ -9,8 +9,32 @@
 <body>
     <h2>Bloco de anotações</h2>
     <a href="/">Home</a>
+    
+    <?php
+    if(!isset($_SESSION['logado'])):
+    ?>
     <a href="/notes/criar">Criar um bloco</a>
+    <a href="/users/cadastrar">Cadastrar usuarioo</a>
+    <?php
+    endif;
+    ?>
+
+    <?php
+    if(!isset($_SESSION['logado'])):
+    ?>
     <a href="/home/login">Login</a>
+    <?php
+    else:
+    ?>
+    Ola <?php echo $_SESSION['userNome']; ?>
+    <a href="/home/logout">Logout</a>
+    <?php
+    endif;
+    ?>
+
+
+
+
     <?php
     require_once '../App/views'.$view.'.php';
     ?>
