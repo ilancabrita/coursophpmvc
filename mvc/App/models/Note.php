@@ -77,4 +77,19 @@ class Note extends App\Core\Model
             return "erro ao excluir";
         endif;
     }
+
+    public function search($search)
+    {
+        $sql = "SELECT * FROM note WHERE titulo LIKE ? COLATE utf8_general-ci";
+        $stmt = Model::getConn()->prepare($$sql);
+        $stmt = bindValue(1, "%{$search}%");
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0):
+            $resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            return $resultado;
+        else:
+            return [];
+        endif;
+    }
 }

@@ -6,12 +6,24 @@ if(!empty($data['mensagem'])):
 endif;
 ?>
 
-<h1>Fazer login</h1>
+<div>
+    <h1>Fazer login</h1>
 
-<form action="" method="POST">
-    Email: <input type="text" name="email">
-    <br>
-    Senha: <input type="password" name="senha">
-    <br>
-    <button name="entrar">Entrar</button>
-</form>
+    <form action="" method="POST">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="email" type="email" name="email" class="validate">
+                <label for="email">Email</label>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password" type="password" name="senha" class="validate">
+                <label for="password">Password</label>
+                </div>
+        </div>
+        <br>
+        <button name="entrar">Entrar</button>
+    </form>
+</div>
