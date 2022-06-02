@@ -8,10 +8,12 @@ if(!empty($data['mensagem'])):
 endif;
 ?>
 
-<form action="/notes/criar" method="POST">
+<form action="/notes/criar" method="POST" enctype="multipart/form-data">
     Titulo: <input type="text" name="titulo">
     <br>
     Texto: <textarea name="texto" id="" cols="30" rows="10"></textarea>
+    <br>
+    Image: <input type="file" name="foo" value=""/>
     <br>
     <button name="cadastrar">Cadastrar</button>
 </form>
