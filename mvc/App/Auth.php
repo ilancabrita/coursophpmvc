@@ -19,6 +19,7 @@ class Auth
                 $_SESSION['logado'] = true;
                 $_SESSION['userId'] = $resultado['id'];
                 $_SESSION['userNome'] = $resultado['nome'];
+                $_SESSION['level'] = $resultado['level'];
                 header('Location: /home/index');
             else:
                 return "senha invalida";
@@ -35,9 +36,17 @@ class Auth
         header('Location: /home/login');
     }
 
-    public static function checkLogin()
+    public static function CheckLogin()
     {
         if(!isset($_SESSION['logado'])):
+            header('Location: /home/login');
+            die;
+        endif;
+    }
+
+    public static function CheckLoginAdmin()
+    {
+        if($_SESSION['level'] != 2):
             header('Location: /home/login');
             die;
         endif;

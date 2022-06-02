@@ -7,7 +7,8 @@ class Users extends App\Core\Controller
 {
     public function cadastrar()
     {
-        Auth::checkLogin();
+        Auth::CheckLogin();
+        Auth::CheckLoginAdmin();
         $mensagem = array();
 
         if(!isset($_POST['cadastrar'])):

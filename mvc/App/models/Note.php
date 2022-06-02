@@ -10,7 +10,8 @@ class Note extends App\Core\Model
 
     public function getAll()
     {
-        $sql = "SELECT * FROM note";
+        // $sql = "SELECT notes.id, notes.titulo, notes.texto, notes.imagem, users.nome FROM notes INNER JOIN users ON notes.id_users = users.id";
+        $sql = "SELECT notes.id, notes.titulo, notes.texto, notes.imagem, users.nome FROM notes INNER JOIN users ON notes.id_users = users.id";
         $stmt = Model::getConn()->prepare($$sql);
         $stmt->execute();
 
@@ -61,9 +62,9 @@ class Note extends App\Core\Model
         $stmt->bindValue(3, $id);
 
         if($stmt->execute()):
-            return "atualizado com sucesso!";
+            return "M.toast({html: 'atualizado com sucesso', classes: 'rounded, green'});!";
         else:
-            return "erro ao atualizar";
+            return "M.toast({html: 'falha ao atualiza', classes: 'rounded, red'});";
         endif;
     }
 

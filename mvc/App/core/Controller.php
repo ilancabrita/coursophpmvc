@@ -6,7 +6,7 @@ class Controller
 {
     public function model($model)
     {
-        require_once '../App/models'.$model.'.php';
+        require_once '../App/models'.$model.'.php'; // Outra pasta, remover../
         return new $model;
     }
 

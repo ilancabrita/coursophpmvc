@@ -58,19 +58,13 @@
         </div>
     </nav>
 
-    
-    
-    
-    
-    
-
-    
-
-
-
-
     <?php
-    require_once '../App/views'.$view.'.php';
+    require_once '../App/views'.$view.'.php'; // Outra pasta, remover../
     ?>
+
+    <script>
+        // Script
+        M.AutoInit();
+    </script>
 </body>
 </html>

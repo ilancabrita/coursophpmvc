@@ -11,9 +11,13 @@ class App
     {
         print_r($url = $this->parseURL());
 
-        if(\file_exists('../App/controllers/'.$url[1].'.php')):
+        if(\file_exists('../App/controllers/'.$url[1].'.php')): // Outra pasta, remover../ 
             $this->controller = $url[1];
             unset($url[1]);
+        elseif(empty($url[1])):
+            $this->controller = "home";
+        else:
+            $this->controller = "error404";
         endif;
 
         require_once'../App/controllers/'.$this->controller.'.php';

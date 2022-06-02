@@ -34,6 +34,8 @@ endif;
     endif;
     ?>
 
+    <!--Outra pasta, colocar url base antest dos links-->
+
     <?php
     foreach($pagination->resultado() as $note);
     ?>
@@ -56,13 +58,30 @@ endif;
             ?>
         </p>
 
+        <p>
+            <?php
+            echo $note['nome'];
+            ?>
+        </p>
+
         <?php
         if(!isset($_SESSION['logado'])):
         ?>
 
-        <a class="waves-effect waves-light btn orange" href="/notes/editar/<?php echo $note['id']; ?>">aditar</a>
+        <!-- Modal Structure -->
+        <div id="confirmacao-excluir-<?php echo $note['id']; ?>" class="modal">
+            <div class="modal-content">
+                <h4>Confirmação</h4>
+                <p>Tem certeza ?</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                <a class="waves-effect waves-light btn red" href="/notes/excluir/<?php echo $note['id']; ?>">excluir</a>
+            </div>
 
-        <a class="waves-effect waves-light btn red" href="/notes/excluir/<?php echo $note['id']; ?>">excluir</a>
+        </div>
+        <a class="waves-effect waves-light btn orange" href="/notes/editar/<?php echo $note['id']; ?>">aditar</a>
+        <a class="waves-effect waves-light btn modal-trigger red" href="#confirmacao-excluir-<?php echo $note['id']; ?>">Excluir</a>
 
         <?php
         endif;
@@ -75,6 +94,8 @@ endif;
     <?php
     endforeach;
     ?>
+
+
 
     <?php
     // Navegação
