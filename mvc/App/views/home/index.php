@@ -38,13 +38,17 @@ endif;
     foreach($pagination->resultado() as $note);
     ?>
 
-        <h1>
+        <div class="row">
+
+        <img style="float:left; margin:0 15px 15ps 0" src="<?php echo URL_BASE; ?>/uploads/<?php echo $note['imagem']; ?>" width="300" alt="imagem">
+
+        <h3 class="light">
             <a href="/notes/ver/<?php echo $note['id']; ?>">
             <?php
             echo $note['titulo'];
             ?>
             </a>
-        </h1>
+        </h3>
 
         <p>
             <?php
@@ -65,6 +69,8 @@ endif;
         ?>
 
         <br>
+
+        </div>
 
     <?php
     endforeach;

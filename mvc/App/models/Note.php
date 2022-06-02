@@ -6,6 +6,7 @@ class Note extends App\Core\Model
 {
     public $titulo;
     public $texto;
+    public $imagem;
 
     public function getAll()
     {
@@ -29,7 +30,7 @@ class Note extends App\Core\Model
         $stmt->execute();
 
         if($stmt->rowCount() > 0):
-            $resultado = $stmt->fetch(\PDO::FETCH_ASSOC);
+            $resultado = $stmt->fetchAll(\PDO::FETCH_ASSOC);
             return $resultado;
         else:
             return [];
@@ -38,10 +39,11 @@ class Note extends App\Core\Model
 
     public function save()
     {
-        $sql = "INSERT INTO notas (titulo, texto) VALUES";
+        $sql = "INSERT INTO notas (titulo, texto, imagem) VALUES (?,?,?)";
         $stmt = Model::getConn()->prepare($sql);
         $stmt->bindValue(1, $this->titulo);
         $stmt->bindValue(2, $this->texto);
+        $stmt->bindValue(3, $this->imagem);
 
         if($stmt->execute()):
             return "cadastrado com sucesso!";
@@ -56,7 +58,7 @@ class Note extends App\Core\Model
         $stmt = Model::getConn()->prepare($sql);
         $stmt->bindValue(1, $this->titulo);
         $stmt->bindValue(2, $this->texto);
-        $stmt->bindValue(3, $this->id);
+        $stmt->bindValue(3, $id);
 
         if($stmt->execute()):
             return "atualizado com sucesso!";
@@ -65,8 +67,44 @@ class Note extends App\Core\Model
         endif;
     }
 
+    public function updateImagem($id)
+    {
+        $sql = "UPDATE notas SET titulo = ?, texto = ?, imagem = ? VALUES id = ?";
+        $stmt = Model::getConn()->prepare($sql);
+        $stmt->bindValue(1, $this->titulo);
+        $stmt->bindValue(2, $this->texto);
+        $stmt->bindValue(2, $this->imagem);
+        $stmt->bindValue(3, $id);
+
+        if($stmt->execute()):
+            return "atualizado com sucesso!";
+        else:
+            return "erro ao atualizar";
+        endif;
+    }
+
+    public function deleteImagem($id)
+    {
+        $sql = "UPDATE notas SET imagem = ? VALUES id = ?";
+        $stmt = Model::getConn()->prepare($sql);
+        $stmt->bindValue(1, "");
+        $stmt->bindValue(2, $id);
+
+        if($stmt->execute()):
+            return "imagem excluida com sucesso!";
+        else:
+            return "erro ao excluir imagem";
+        endif;
+    }
+
     public function delete($id)
     {
+        $resultado = $this->findId($id);
+
+        if(!empty($resultado['imagem'])):
+            unlink("uploads/".$resultado['imagem']);
+        endif;
+
         $sql = "DELETE FROM note WHERE id = ?";
         $stmt = Model::getConn()->prepare($$sql);
         $stmt = bindValue(1, $id);
