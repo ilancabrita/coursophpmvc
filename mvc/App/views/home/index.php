@@ -42,60 +42,58 @@ endif;
 
         <div class="row">
 
-        <img style="float:left; margin:0 15px 15ps 0" src="<?php echo URL_BASE; ?>/uploads/<?php echo $note['imagem']; ?>" width="300" alt="imagem">
+            <img style="float:left; margin:0 15px 15ps 0" src="<?php echo URL_BASE; ?>/uploads/<?php echo $note['imagem']; ?>" width="300" alt="imagem">
 
-        <h3 class="light">
-            <a href="/notes/ver/<?php echo $note['id']; ?>">
+            <h3 class="light">
+                <a href="/notes/ver/<?php echo $note['id']; ?>">
+                <?php
+                echo $note['titulo'];
+                ?>
+                </a>
+            </h3>
+
+            <p>
+                <?php
+                echo $note['texto'];
+                ?>
+            </p>
+
+            <p>
+                <?php
+                echo $note['nome'];
+                ?>
+            </p>
+
             <?php
-            echo $note['titulo'];
+            if(!isset($_SESSION['logado'])):
             ?>
-            </a>
-        </h3>
 
-        <p>
-            <?php
-            echo $note['texto'];
-            ?>
-        </p>
+            <!-- Modal Structure -->
+            <div id="confirmacao-excluir-<?php echo $note['id']; ?>" class="modal">
+                <div class="modal-content">
+                    <h4>Confirmação</h4>
+                    <p>Tem certeza ?</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                    <a class="waves-effect waves-light btn red" href="/notes/excluir/<?php echo $note['id']; ?>">excluir</a>
+                </div>
 
-        <p>
-            <?php
-            echo $note['nome'];
-            ?>
-        </p>
-
-        <?php
-        if(!isset($_SESSION['logado'])):
-        ?>
-
-        <!-- Modal Structure -->
-        <div id="confirmacao-excluir-<?php echo $note['id']; ?>" class="modal">
-            <div class="modal-content">
-                <h4>Confirmação</h4>
-                <p>Tem certeza ?</p>
             </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                <a class="waves-effect waves-light btn red" href="/notes/excluir/<?php echo $note['id']; ?>">excluir</a>
-            </div>
+            <a class="waves-effect waves-light btn orange" href="/notes/editar/<?php echo $note['id']; ?>">aditar</a>
+            <a class="waves-effect waves-light btn modal-trigger red" href="#confirmacao-excluir-<?php echo $note['id']; ?>">Excluir</a>
 
-        </div>
-        <a class="waves-effect waves-light btn orange" href="/notes/editar/<?php echo $note['id']; ?>">aditar</a>
-        <a class="waves-effect waves-light btn modal-trigger red" href="#confirmacao-excluir-<?php echo $note['id']; ?>">Excluir</a>
+            <?php
+            endif;
+            ?>
 
-        <?php
-        endif;
-        ?>
-
-        <br>
+            <br>
 
         </div>
 
     <?php
     endforeach;
     ?>
-
-
 
     <?php
     // Navegação
